@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# After you publish, replace YOUR-DOMAIN with your real address:
+Sitemap: https://YOUR-DOMAIN/sitemap.xml
