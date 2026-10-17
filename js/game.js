@@ -56,9 +56,8 @@
 
   /* ---------- State ---------- */
   var modeKey = 'classic', diffKey = 'normal';
-  var state = 'menu';            // menu | help | play | paused | clear | over
+  var state = 'menu';            // menu | play | paused | clear | over
   var G = null;                  // data of the current game
-  var helpFrom = 'start';        // where the help popup was opened from (start | pause)
   var scale = 1, t = 0, shake = 0, muted = false;
   var keys = { l: 0, r: 0 };
   var touch = null;              // finger that is dragging the paddle
@@ -981,39 +980,21 @@
   }
 
   /* ---------- 6. MENUS AND INPUT ---------- */
-  var screens = { menu: $('menu'), help: $('help'), pause: $('pause'), clear: $('clear'), over: $('over') };
+  var screens = { menu: $('menu'), pause: $('pause'), clear: $('clear'), over: $('over') };
 
   function setState(s) {
     state = s;
-    var map = { menu: 'menu', help: 'help', paused: 'pause', clear: 'clear', over: 'over', play: null };
-    for (var k in screens) screens[k].classList.toggle('hidden', k !== map[s]);
+    var map = { menu: 'menu', paused: 'pause', clear: 'clear', over: 'over', play: null };
+    for (var k in screens) if (screens[k]) screens[k].classList.toggle('hidden', k !== map[s]);
     $('hudBtns').classList.toggle('hidden', s !== 'play');
     canvas.classList.toggle('playing', s === 'play');
     keys.l = keys.r = 0; touch = null;
   }
 
-  function openHelp(from) {
-    helpFrom = from;
-    var items = isTouch
-      ? ['<b>Drag</b> anywhere on the game to move the paddle.',
-         '<b>Tap</b> to launch the ball (and to shoot lasers).',
-         'Use the pause button (top right) to pause.']
-      : ['Move the <b>mouse</b> (or use <b>arrow keys</b> / <b>A D</b>) to move the paddle.',
-         '<b>Click</b> or press <b>Space</b> to launch the ball (and to shoot lasers).',
-         'Press <b>P</b> or <b>Esc</b> to pause.'];
-    items.push(modeKey === 'classic' ? 'Break <b>every brick</b> to clear the level. Steel bricks cannot be broken.'
-                                     : 'Break bricks fast. If they reach your paddle, <b>game over</b>.');
-    items.push('Catch the falling <b>capsules</b> for power-ups (list below).');
-    items.push('Bomb bricks <b>explode</b>. Bricks with dots need more hits.');
-    items.push('Break bricks in a row without touching the paddle for a <b>combo</b> and more points.');
-    $('helpList').innerHTML = '<li>' + items.join('</li><li>') + '</li>';
-    setState('help');
-  }
-
   function startGame() {
     audio();
     newGame();
-    openHelp('start');
+    setState('play');
   }
 
   function pauseGame() { if (state === 'play') setState('paused'); }
@@ -1065,8 +1046,6 @@
   $('oMenuBtn').addEventListener('click', toMenu);
   $('pMenuBtn').addEventListener('click', toMenu);
   $('resumeBtn').addEventListener('click', resumeGame);
-  $('pHelpBtn').addEventListener('click', function () { openHelp('pause'); });
-  $('helpBtn').addEventListener('click', function () { if (helpFrom === 'pause') setState('paused'); else setState('play'); });
   $('nextBtn').addEventListener('click', function () { audio(); loadLevel(G.level + 1); setState('play'); });
   $('pauseBtn').addEventListener('click', pauseGame);
   $('muteBtn').addEventListener('click', function () {

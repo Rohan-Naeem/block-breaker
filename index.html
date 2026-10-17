@@ -24,7 +24,7 @@
   <meta property="og:image" content="https://YOUR-DOMAIN/share.png">   (a 1200x630 picture of the game)
 -->
 
-<!-- Structured data: tells Google this page is a free web game and lists the questions answered below -->
+<!-- Structured data: tells Google this page is a free web game -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -38,19 +38,6 @@
   "inLanguage": "en",
   "isAccessibleForFree": true,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Is Block Breaker free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Open the page and play. There is nothing to download or install." } },
-    { "@type": "Question", "name": "Does Block Breaker work on mobile and tablet?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Drag your finger to move the paddle and tap to launch the ball. It works in portrait and landscape." } },
-    { "@type": "Question", "name": "How do I get power-ups?", "acceptedAnswer": { "@type": "Answer", "text": "Some broken bricks drop a colored capsule. Move your paddle under it to catch it." } },
-    { "@type": "Question", "name": "What is the difference between Classic and Endless mode?", "acceptedAnswer": { "@type": "Answer", "text": "In Classic you clear every brick to finish a level. In Endless new rows of bricks keep dropping and the game ends when they reach your paddle." } },
-    { "@type": "Question", "name": "How do I use the laser?", "acceptedAnswer": { "@type": "Answer", "text": "Catch the red L capsule. While it is active, click, tap or press Space to shoot lasers from the paddle." } }
-  ]
 }
 </script>
 
@@ -108,34 +95,11 @@
       <p class="note">Free. Works on desktop, phone and tablet.</p>
     </section>
 
-    <!-- How to play: shown at the start of every game. The list is filled in by js/game.js -->
-    <section class="screen panel hidden" id="help">
-      <h2>How to play</h2>
-      <ul class="help-list" id="helpList"></ul>
-      <div class="legend">
-        <span><i style="background:#4c8bf5">W</i>Wide paddle</span>
-        <span><i style="background:#ff9ad5">2</i>Twin ball (2 balls)</span>
-        <span><i style="background:#ff6bd6">M</i>Multi-ball (3 balls)</span>
-        <span><i style="background:#35d0e8">S</i>Slow ball</span>
-        <span><i style="background:#ff8a3d">F</i>Fireball</span>
-        <span><i style="background:#ff4d5e">L</i>Laser</span>
-        <span><i style="background:#6be585">C</i>Catch ball</span>
-        <span><i style="background:#b07bff">G</i>Giant ball</span>
-        <span><i style="background:#ff5a36">B</i>Bomb ball</span>
-        <span><i style="background:#f7c948">x2</i>Double score</span>
-        <span><i style="background:#4de0b4">N</i>Safety net</span>
-        <span><i style="background:#ffd93d">+</i>Extra life</span>
-        <span><i style="background:#7b7f93">-</i>Shrink (bad)</span>
-      </div>
-      <button id="helpBtn" class="btn" type="button">Got it, start!</button>
-    </section>
-
     <!-- Pause -->
     <section class="screen panel hidden" id="pause">
       <h2>Paused</h2>
       <div class="col">
         <button id="resumeBtn" class="btn" type="button">Resume</button>
-        <button id="pHelpBtn" class="btn ghost" type="button">How to play</button>
         <button id="pMenuBtn" class="btn ghost" type="button">Quit to menu</button>
       </div>
     </section>
@@ -168,73 +132,6 @@
   </div>
 
   <noscript><p class="noscript">Block Breaker needs JavaScript. Please turn it on in your browser to play.</p></noscript>
-
-  <article class="info">
-    <h2>Play Block Breaker free online</h2>
-    <p>Block Breaker is a free brick breaker game you play right in your browser. Bounce the ball off your paddle, smash every brick and catch falling power-ups. It works on phone, tablet and desktop, with no download and no sign-up.</p>
-
-    <h2>Game modes</h2>
-    <ul>
-      <li><b>Classic:</b> clear every brick to finish a level. There are 8 hand-made levels (including a heart and a rainbow gate), then endless new levels that get harder.</li>
-      <li><b>Endless:</b> new rows of bricks keep dropping from the top. Break them fast. If the bricks reach your paddle, the game is over. See how long you can last.</li>
-      <li><b>Difficulty:</b> pick Easy, Normal or Hard. It changes your lives, the ball speed, the paddle size and how often power-ups drop.</li>
-    </ul>
-
-    <h2>Controls</h2>
-    <ul>
-      <li><b>Desktop:</b> move the mouse (or use the arrow keys or A and D) to move the paddle. Click or press Space to launch the ball and shoot lasers. Press P or Esc to pause.</li>
-      <li><b>Phone and tablet:</b> drag anywhere on the game to move the paddle. Tap to launch the ball and shoot lasers. Turn your device sideways or stay in portrait, both work.</li>
-      <li><b>Full screen:</b> use the full screen button while you play (not available on iPhone).</li>
-    </ul>
-
-    <h2>Bricks</h2>
-    <ul>
-      <li><b>Colored gem bricks:</b> break in 1 hit.</li>
-      <li><b>Framed bricks with dots:</b> need as many hits as they have dots. Cracks show the damage.</li>
-      <li><b>Steel bricks:</b> cannot be broken. You do not need to clear them to finish a level.</li>
-      <li><b>Bomb bricks:</b> explode and damage every brick around them. Chain them for big combos.</li>
-    </ul>
-
-    <h2>Power-ups</h2>
-    <table>
-      <thead><tr><th>Capsule</th><th>Name</th><th>What it does</th></tr></thead>
-      <tbody>
-        <tr><td>W</td><td>Wide paddle</td><td>Makes your paddle bigger for 12 seconds.</td></tr>
-        <tr><td>2</td><td>Twin ball</td><td>Gives you two balls instead of one.</td></tr>
-        <tr><td>M</td><td>Multi-ball</td><td>Splits every ball into three.</td></tr>
-        <tr><td>S</td><td>Slow ball</td><td>Slows the ball down for 10 seconds.</td></tr>
-        <tr><td>F</td><td>Fireball</td><td>The ball burns through bricks (not steel) for 8 seconds.</td></tr>
-        <tr><td>L</td><td>Laser</td><td>Shoot lasers from the paddle with a click, tap or Space.</td></tr>
-        <tr><td>C</td><td>Catch ball</td><td>The ball sticks to the paddle so you can aim. Click or tap to release.</td></tr>
-        <tr><td>G</td><td>Giant ball</td><td>A bigger ball that hits bricks twice as hard.</td></tr>
-        <tr><td>B</td><td>Bomb ball</td><td>Every hit explodes the bricks around it.</td></tr>
-        <tr><td>x2</td><td>Double score</td><td>All points count double for 12 seconds.</td></tr>
-        <tr><td>N</td><td>Safety net</td><td>A shield under the paddle saves one lost ball.</td></tr>
-        <tr><td>+</td><td>Extra life</td><td>Adds one life (up to 9).</td></tr>
-        <tr><td>-</td><td>Shrink</td><td>Bad one. Makes your paddle smaller. Avoid it.</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Scoring and tips</h2>
-    <ul>
-      <li>Break bricks in a row without touching the paddle to build a combo and multiply your points.</li>
-      <li>Hit the ball with the edge of the paddle to send it at a sharp angle. Hit it with the middle to send it straight up.</li>
-      <li>Aim at bomb bricks to clear big areas at once.</li>
-      <li>Keep a Safety net or an extra life in reserve for the hard levels.</li>
-    </ul>
-
-    <h2>Questions</h2>
-    <h3>Is Block Breaker free?</h3>
-    <p>Yes. Open the page and play. There is nothing to download or install.</p>
-    <h3>Does Block Breaker work on mobile and tablet?</h3>
-    <p>Yes. Drag your finger to move the paddle and tap to launch the ball. It works in portrait and landscape.</p>
-    <h3>How do I get power-ups?</h3>
-    <p>Some broken bricks drop a colored capsule. Move your paddle under it to catch it.</p>
-    <h3>What is the difference between Classic and Endless mode?</h3>
-    <p>In Classic you clear every brick to finish a level. In Endless new rows of bricks keep dropping and the game ends when they reach your paddle.</p>
-    <h3>How do I use the laser?</h3>
-    <p>Catch the red L capsule. While it is active, click, tap or press Space to shoot lasers from the paddle.</p>
-  </article>
 </main>
 
 <script src="js/game.js"></script>
