@@ -50,8 +50,8 @@
   var GOOD = ['wide', 'wide', 'twin', 'twin', 'multi', 'slow', 'fire', 'laser', 'laser', 'sticky', 'mega', 'bomb', 'score', 'shield', 'shield', 'life'];
 
   var MODE_TEXT = {
-    classic: 'Clear every brick, level after level. Lose all your balls and you lose a life.',
-    endless: 'New rows of bricks keep dropping. Do not let them reach your paddle!'
+    classic: 'Clear all bricks to beat each level.',
+    endless: 'Smash falling bricks before they reach your paddle!'
   };
 
   /* ---------- State ---------- */
