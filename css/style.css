@@ -80,13 +80,6 @@ button:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
   font-size:22px;font-size:clamp(18px,7cqw,38px)}
 .rank{margin:0;color:var(--gold);font-family:var(--display);font-size:1.1em}
 
-/* how to play popup */
-.help-list{list-style:none;margin:0;padding:0;width:min(500px,100%);text-align:left}
-.help-list li{padding:.3em 0;border-bottom:1px solid var(--line);font-weight:700;line-height:1.3}
-.help-list b{color:var(--gold)}
-.legend{display:grid;grid-template-columns:1fr 1fr;gap:.3em .8em;width:min(500px,100%);text-align:left;font-size:.78em;font-weight:700;color:var(--muted)}
-.legend i{display:inline-grid;place-items:center;width:2.1em;height:1.3em;border-radius:5px;font-style:normal;font-weight:800;color:#111;margin-right:.5em}
-
 /* game over */
 .stats{list-style:none;margin:0;padding:0;width:min(340px,100%)}
 .stats li{display:flex;justify-content:space-between;padding:.3em 0;border-bottom:1px solid var(--line)}
@@ -95,7 +88,6 @@ button:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
 /* very short screens (phone held sideways): tighter popups */
 @media (max-height:480px){
   .screen{gap:6px;padding:10px}
-  .help-list li{padding:.15em 0}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
