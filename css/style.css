@@ -80,16 +80,14 @@ main {
 }
 
 /* ==========================================================
-   THE STAGE - Locked 3:4 aspect ratio, dynamically maximized
-   Guaranteed zero overflow across all devices
+   THE STAGE - Responsive Full Viewport Arcade Arena
+   Expands to full screen width & height on all devices
    ========================================================== */
 .stage {
   position: relative;
-  margin: auto;
-  aspect-ratio: 3 / 4;
-  /* Maximum fit inside viewport without scrolling */
-  width: min(100vw, calc(100dvh * 0.75));
-  height: min(100dvh, calc(100vw / 0.75));
+  margin: 0;
+  width: 100%;
+  height: 100%;
   max-width: 100vw;
   max-height: 100dvh;
   container-type: size;
@@ -100,28 +98,15 @@ main {
   justify-content: center;
 }
 
-/* On desktop / large screens, add a premium floating cabinet frame */
-@media (min-width: 600px) and (min-height: 700px) {
-  .stage {
-    width: min(calc(100vw - 28px), calc((100dvh - 28px) * 0.75));
-    height: min(calc(100dvh - 28px), calc((100vw - 28px) / 0.75));
-    border-radius: 18px;
-    box-shadow: 
-      0 0 0 2px rgba(255, 255, 255, 0.14),
-      0 0 50px rgba(123, 66, 255, 0.28),
-      0 24px 60px rgba(0, 0, 0, 0.85);
-  }
-}
-
-/* Fullscreen mode support */
+/* Fullscreen mode support - true 100% full screen width & height */
 .wrap:fullscreen, .wrap:-webkit-full-screen {
   background: #000;
   width: 100vw;
   height: 100vh;
 }
 .wrap:fullscreen .stage, .wrap:-webkit-full-screen .stage {
-  width: min(100vw, calc(100vh * 0.75));
-  height: min(100vh, calc(100vw / 0.75));
+  width: 100vw;
+  height: 100vh;
   border-radius: 0;
   box-shadow: none;
 }
@@ -148,19 +133,19 @@ canvas.playing {
    ========================================================== */
 .hudbtns {
   position: absolute;
-  top: max(env(safe-area-inset-top, 6px), 1.5cqh);
-  right: max(env(safe-area-inset-right, 6px), 2cqw);
+  top: max(env(safe-area-inset-top, 8px), 10px);
+  right: max(env(safe-area-inset-right, 12px), 16px);
   display: flex;
-  gap: clamp(4px, 1.2cqw, 8px);
+  gap: 8px;
   z-index: 6;
 }
 
 .hudbtns button {
-  width: clamp(30px, 7.5cqw, 42px);
-  height: clamp(30px, 7.5cqw, 42px);
+  width: clamp(32px, 4.8cqh, 40px);
+  height: clamp(32px, 4.8cqh, 40px);
   border-radius: 50%;
   border: 2px solid var(--line);
-  background: rgba(14, 10, 36, 0.72);
+  background: rgba(14, 10, 36, 0.78);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #fff;
@@ -204,20 +189,20 @@ canvas.playing {
   justify-content: center;
   text-align: center;
   overflow: hidden; /* Guaranteed no scroll */
-  padding: clamp(8px, 2.5cqh, 24px) clamp(10px, 3cqw, 24px);
-  gap: clamp(6px, 1.7cqh, 14px);
+  padding: clamp(12px, 3cqh, 28px) clamp(16px, 4cqw, 36px);
+  gap: clamp(8px, 1.8cqh, 16px);
   font-size: clamp(12px, 2cqh, 16px);
-  background: var(--panel-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(8, 5, 24, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .screen.menu {
-  background: radial-gradient(circle at 50% 25%, rgba(42, 17, 85, 0.88), rgba(7, 5, 20, 0.94));
+  background: radial-gradient(circle at 50% 35%, rgba(42, 17, 85, 0.82), rgba(7, 5, 20, 0.94));
 }
 
 .panel {
-  background: radial-gradient(circle at 50% 15%, rgba(65, 25, 120, 0.88), rgba(8, 5, 24, 0.96));
+  background: radial-gradient(circle at 50% 35%, rgba(65, 25, 120, 0.85), rgba(8, 5, 24, 0.96));
 }
 
 /* ==========================================================
@@ -374,9 +359,10 @@ button:focus-visible {
 .col {
   display: flex;
   flex-direction: column;
-  gap: clamp(8px, 1.6cqh, 14px);
+  gap: clamp(10px, 1.8cqh, 16px);
   align-items: stretch;
-  min-width: min(240px, 80%);
+  width: min(320px, 86%);
+  max-width: 320px;
 }
 
 .row {
@@ -392,17 +378,18 @@ button:focus-visible {
   font-weight: 400;
   line-height: 1.1;
   margin: 0;
-  font-size: clamp(20px, 5cqh, 34px);
+  font-size: clamp(24px, 5.5cqh, 42px);
   color: #fff;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.03em;
+  text-shadow: 0 4px 0 #9e1452, 0 8px 24px rgba(255, 51, 119, 0.5);
 }
 
 .rank {
   margin: 0;
   color: var(--gold);
   font-family: var(--display);
-  font-size: clamp(13px, 2.4cqh, 18px);
-  text-shadow: 0 0 12px var(--gold-glow);
+  font-size: clamp(14px, 2.6cqh, 20px);
+  text-shadow: 0 0 14px var(--gold-glow);
 }
 
 /* ==========================================================
@@ -411,11 +398,15 @@ button:focus-visible {
 .stats {
   list-style: none;
   margin: 0;
-  padding: 0;
-  width: min(300px, 88%);
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  width: min(340px, 88%);
+  max-width: 340px;
   display: flex;
   flex-direction: column;
-  gap: clamp(2px, 0.5cqh, 5px);
+  gap: clamp(4px, 0.8cqh, 7px);
 }
 
 .stats li {
