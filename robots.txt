@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# After you publish, replace YOUR-DOMAIN with your real address:
-Sitemap: https://YOUR-DOMAIN/sitemap.xml
+Sitemap: https://block-breaker-coral.vercel.app/sitemap.xml
